@@ -1,6 +1,6 @@
 //grabbling the packages
 var mysql = require("mysql");
-var inquirer = require ('inquiere');
+var inquirer = require ('inquirer');
 var Table = require('cli-table');
 
 //connection to database
@@ -52,3 +52,33 @@ function displayMenu() {
         }
     });
 };
+
+// Product View ________________________________________________________________________________
+
+connection.query("SELECT id, product_name, price,stock_quantity FROM products", function(err,res){
+
+    if (err) throw err;
+    console.log("");
+    console.log("Complete Inventory List")
+
+    var table = new Table ({
+                        head:['Id', 'Product Description', 'Price', 'Quantity' ],
+                        colWidths: [5,50,8,10],
+                        colAligns: ['center','left','right','center'],
+                        style: {
+                            head:[ 'cyan' ],
+                            compact: true
+                        }
+                    });//end table
+                    
+                    for (var i = 0; i < res.length; i++) {
+                        table.push([res[i].id, res[i].product_name,res[i].stock_quantity]);    
+                    }
+                       
+                    ;
+                    console.log(table.toString());
+                    console.log("");
+                displayMenu();    
+    });
+
+// Low Inventory View _________________________________________________________________________________
