@@ -46,6 +46,11 @@ function displayMenu() {
             lowInventory();
             break;
 
+            case "Add to Inventory":
+            addItems();
+            break;
+
+
             case "Add New Product":
             newProdutc();
             break;
@@ -82,3 +87,71 @@ connection.query("SELECT id, product_name, price,stock_quantity FROM products", 
     });
 
 // Low Inventory View _________________________________________________________________________________
+//View Low Inventory option lists all items with an inventory count lower than 15
+
+function lowInventory() {
+    connection.query("SELECT * FROM products WHERE stock_quantity < 15 ", function (err, res) {
+        if(err) throw err;
+        console.log("");
+        console.log("Low Inventory Items");
+        var table = new Table({
+			head: ['Id', 'Product Description', 'Price', 'Quantity'],
+			colWidths: [5, 50, 8, 10],
+			colAligns: ['center', 'left', 'right', 'center'],
+			style: {
+				head: ['cyan'],
+				compact: true
+			}
+	    });//end table
+	    for (var i = 0; i < res.length; i++) {
+	      table.push([res[i].id, res[i].product_name, res[i].price, res[i].stock_quantity]);
+	    }
+    	console.log(table.toString());
+    	console.log("");
+        displayMenu();
+    });
+};
+
+//Add to Inventory
+
+function addItems() {        
+    //Start of inquirer to add items to inventory
+    inquirer.prompt({
+        name: "item_name",
+        type:"input",
+        message:"What is the ID number of the product you want to add inventory for?"
+    }).then(function(answer1){
+        var selection = answer1.item_name;
+        connection.query("SELECT * FROM products WHERE id=?", selection, function(err, res) {
+            if (err) throw err;
+            if (res.length === 0) {
+                console.log("That Product does not exist!");
+                addItems();
+            }
+            else {
+                inquirer.prompt({
+                    name: "item_quantity",
+                    type: "input",
+                    message: "How many items do you want to add to the inventory?"
+                }).then(function(answer2){
+                    var currentQuantity = parseInt(res[0].stock_quantity);
+                    var quantity = parseInt(answer2.item_quantity);
+                    if (quantity < 0) {
+                        console.log("Please enter a number higher than 0");
+                        addItems();
+                    }
+                    else{
+                        var newQuantity = currentQuantity + quantity;
+                        connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity: newQuantity}, {id: res[0].id}], function(err, res){
+                            if (err) throw err;
+                            console.log("");
+                            console.log("Quantity has been updated! Check your inventory.");
+                            console.log("");
+                            displayMenu();
+                        });
+                    }; //end of else
+                }); //end of answer2 function
+            }; //end of else
+        }); //end of query
+    }); //end of answer1 function
+};
