@@ -155,3 +155,47 @@ function addItems() {
         }); //end of query
     }); //end of answer1 function
 };
+
+// Add  a completely new product to the store
+
+function newProduct() {
+
+    inquirer.prompt ([
+        {
+            name: "name",
+            type:"input",
+            message: "Please enter the name of the product you'd like to add"
+        },{
+            name: "department",
+            type:"input",
+            message: "What department does this item belong to?"
+        },{
+
+            name:"price",
+            type: "input",
+            message: "please enter the price of this item",
+        }, {
+            name:"stockQuantity",
+            type: "input",
+            message: "Pelase enter the stock for this item"
+        }
+       
+    ]).then(function(answer){
+        connection.query("INSERT INTO products SET?",{
+            product_name: answer.name,
+            department_name:answer.department,
+            price:answer.price,
+            stock_quantity:answer.stockQuantity},function(err) {
+                if (err) throw err;
+                console.log("");
+                console.log("You've successfuly added a new item");
+                console.log("Product Name: " + answer.name);
+                console.log("Department Name: " + answer.department);
+                console.log("Price Name: " + answer.price);
+                console.log("Stock Quantity: " +answer.stockQuantity);
+                console.log("");
+                displayMenu();
+
+         }); //end of query
+    })
+}; //end of function
