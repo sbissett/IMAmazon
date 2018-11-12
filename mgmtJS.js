@@ -52,7 +52,7 @@ function displayMenu() {
 
 
             case "Add New Product":
-            newProdutc();
+            newProduct();
             break;
         }
     });
