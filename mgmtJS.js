@@ -38,7 +38,7 @@ function displayMenu() {
 
     .then(function(answer){
         switch(answer.menuOptions) {
-            case "View Products for Sale":
+            case "View Items for Sale":
             viewProducts();
             break;
 
