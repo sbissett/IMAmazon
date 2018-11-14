@@ -77,7 +77,7 @@ connection.query("SELECT id, product_name, price,stock_quantity FROM products", 
                     });//end table
                     
                     for (var i = 0; i < res.length; i++) {
-                        table.push([res[i].id, res[i].product_name,res[i].stock_quantity]);    
+                        table.push([res[i].id, res[i].product_name,res[i].price,res[i].stock_quantity]);    
                     }
                        
                     ;
@@ -90,7 +90,7 @@ connection.query("SELECT id, product_name, price,stock_quantity FROM products", 
 //View Low Inventory option lists all items with an inventory count lower than 15
 
 function lowInventory() {
-    connection.query("SELECT * FROM products WHERE stock_quantity < 15 ", function (err, res) {
+    connection.query("SELECT * FROM products WHERE stock_quantity < 35 ", function (err, res) {
         if(err) throw err;
         console.log("");
         console.log("Low Inventory Items");
@@ -173,11 +173,11 @@ function newProduct() {
 
             name:"price",
             type: "input",
-            message: "please enter the price of this item",
+            message: "please enter the price of this item"
         }, {
             name:"stockQuantity",
             type: "input",
-            message: "Pelase enter the stock for this item"
+            message: "Please enter the stock for this item"
         }
        
     ]).then(function(answer){
