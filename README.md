@@ -33,6 +33,6 @@ Option 3 - allows the user to update the inventory. Prompts guide the user.
 
 Option 4 - allows the user to add new product to their stock. 
 
-![Manager Option 4](https://github.com/sbissett/IMAmazon/blob/master/imags/ManagerPNG4.PNG)
+![Manager Option 4](https://github.com/sbissett/IMAmazon/blob/master/images/ManagerPNG4.PNG)
 
 
