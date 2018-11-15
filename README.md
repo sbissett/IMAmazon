@@ -23,7 +23,7 @@ choose from the following options...
 Option 1 - allows the user to see the list of products for sale, the price and stock levels
 Option 2 - allows the user to see a list of all inventory items that have less than 30 units in stock. If there are no products that meet this criteria the user will see an empty table.
 
-![Manager Options 1 and 2](https://github.com/sbissett/IMAmazon/blob/master/images/ManagerPNG1andPNG2.PNG)
+![Manager Options 1 and 2](https://github.com/sbissett/IMAmazon/blob/master/images/ManagerPNG1and2.PNG)
 
 
 
