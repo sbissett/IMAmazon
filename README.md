@@ -13,7 +13,7 @@ uswer will be prompted to enter the ID# and how many items they want to purchase
 item is in stock, the order will be completed and teh user will see the total amount of 
 their purchase.
 
-Insert Pics here...using Markdown
+![Customer](https://github.com/sbissett/IMAmazon/blob/master/images/CustomerPNG.PNG)
 
 Manager interface 
 
@@ -21,14 +21,18 @@ This protal allows users to view and edit store inventories. The user will be pr
 choose from the following options...
 
 Option 1 - allows the user to see the list of products for sale, the price and stock levels
-Option 2 - allows the user to see a list of all inventory items that have less than 30 units 
-in stock. If there are no products that meet this criteria the user will see an empty table.
+Option 2 - allows the user to see a list of all inventory items that have less than 30 units in stock. If there are no products that meet this criteria the user will see an empty table.
 
-Insert Pics here using Markdown
+![Manager Options 1 and 2](https://github.com/sbissett/IMAmazon/blob/master/images/ManagerPNG1andPNG2.PNG)
+
+
 
 Option 3 - allows the user to update the inventory. Prompts guide the user.
 
+![Manager Option 3](https://github.com/sbissett/IMAmazon/blob/master/images/ManagerPNG3.PNG)
+
 Option 4 - allows the user to add new product to their stock. 
 
-Insert Pics here using Markdown.
+![Manager Option 4](https://github.com/sbissett/IMAmazon/blob/master/imags/ManagerPNG4.PNG)
+
 
